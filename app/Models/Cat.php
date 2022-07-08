@@ -4,14 +4,22 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\App;
 
 class Cat extends Model
 {
     use HasFactory;
 
-    protected $guarded=['id','created_at','updated_at'];
+    protected $guarded = ['id', 'created_at', 'updated_at'];
 
-    public function skills(){
+    public function skills()
+    {
         return $this->hasMany(Skill::class);
+    }
+
+    public function name($Lang = null)
+    {
+        $Lang = $Lang ?? App::getLocale();
+        return json_decode($this->name)->$Lang;
     }
 }

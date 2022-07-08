@@ -2,17 +2,15 @@
 
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
 
-Route::get('/', function () {
-    return view('welcome');
+Route::middleware('Lang')->group(function () {
+    Route::get('/', [\App\Http\Controllers\web\HomeController::class, 'index']);
+    Route::get('categories/show/{id}', [\App\Http\Controllers\web\Catcontroller::class, 'show']);
+    Route::get('skills/show/{id}', [\App\Http\Controllers\web\Skillcontroller::class, 'show']);
+    Route::get('exam/show/{id}', [\App\Http\Controllers\web\Examcontroller::class, 'show']);
+    Route::get('exam/questions/{id}', [\App\Http\Controllers\web\Examcontroller::class, 'question']);
+
 });
+
+Route::get('lang/set/{lang}', [\App\Http\Controllers\web\LangController::class, 'set']);
+
