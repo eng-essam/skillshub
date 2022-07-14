@@ -130,6 +130,7 @@ return [
     'url' => 'The :attribute must be a valid URL.',
     'uuid' => 'The :attribute must be a valid UUID.',
 
+
     /*
     |--------------------------------------------------------------------------
     | Custom Validation Language Lines
@@ -142,8 +143,26 @@ return [
     */
 
     'custom' => [
-        'attribute-name' => [
-            'rule-name' => 'custom-message',
+        'name' => [
+            'required' => 'برجاء كتابة الاسم',
+            'string' => "برجاء كتابة الاسم صحيح",
+        ],
+        'email' => [
+            'required' => 'برجاء كتابة البريد الالكتروني',
+            'email' => "برجاء كتابة البريد الالكتروني صحيح",
+            'unique' => "هذا البريد موجود بالفعل",
+        ],
+        'body' => [
+            'required' => 'برجاء كتابة محتوي الرسالة',
+            'string' => "برجاء محتوي الرسالة بشكل صحيح",
+        ],
+        'password' => [
+            'required' => 'برجاء كتابة كلمة السر',
+            'string' => "برجاء كتابة كلمة السر صحيح",
+        ],
+        'password_confirmation' => [
+            'required' => 'برجاء تأكيد كلمة السر',
+            'confirmed' => "كلمة السر غير متشابهة",
         ],
     ],
 

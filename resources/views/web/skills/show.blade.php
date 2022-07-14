@@ -1,7 +1,7 @@
 @extends('web.layout')
 
 @section('title')
- Show Skill :
+    Skill - {{$skill->name()}}
 @endsection
 
 @section('main')
@@ -11,7 +11,7 @@
 
         <!-- Backgound Image -->
         <div class="bg-image bg-parallax overlay"
-             style="background-image:url({{asset('web/page-background.jpg')}})"></div>
+             style="background-image:url({{asset('web/img/page-background.jpg')}})"></div>
         <!-- /Backgound Image -->
 
         <div class="container">
@@ -19,10 +19,10 @@
                 <div class="col-md-10 col-md-offset-1 text-center">
                     <ul class="hero-area-tree">
                         <li><a href="index.html">Home</a></li>
-                        <li><a href="category.html">Category name</a></li>
-                        <li>Skill name</li>
+                        <li><a href="{{url('categories/show/' . $skill->cat->id)}}">{{$skill->cat->name()}}</a></li>
+                        <li>{{$skill->name()}}</li>
                     </ul>
-                    <h1 class="white-text">Skill name</h1>
+                    <h1 class="white-text">{{$skill->name()}}</h1>
 
                 </div>
             </div>
@@ -46,167 +46,27 @@
                     <!-- row -->
                     <div class="row">
 
+                    @foreach($skill->exams as $exam)
                         <!-- single exam -->
-                        <div class="col-md-3">
-                            <div class="single-blog">
-                                <div class="blog-img">
-                                    <a href="exam.html">
-                                        <img src="{{asset('uploads/exams/exam1.jpg')}}" alt="">
-                                    </a>
-                                </div>
-                                <h4><a href="exam.html">Pro eu error molestie deserunt. At per viderer bonorum
-                                        persecuti.</a></h4>
-                                <div class="blog-meta">
-                                    <span>18 Oct, 2017</span>
-                                    <div class="pull-right">
-                                        <span class="blog-meta-comments"><a href="#"><i class="fa fa-users"></i> 35</a></span>
+                            <div class="col-md-3">
+                                <div class="single-blog">
+                                    <div class="blog-img">
+                                        <a href="{{url("exam/show/$skill->id")}}">
+                                            <img src="{{asset("uploads/$exam->img")}}" alt="">
+                                        </a>
+                                    </div>
+                                    <h4><a href="{{url("exam/show/$skill->id")}}">{{$exam->name()}}</a></h4>
+                                    <div class="blog-meta">
+                                        <span>{{carbon\carbon::parse($exam->created_at)->format('d M, Y') }}</span>
+                                        <div class="pull-right">
+                                            <span class="blog-meta-comments"><a
+                                                    href="{{url("exam/show/$skill->id")}}"><i class="fa fa-users"></i> {{$exam->users()->count()}}</a></span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <!-- /single exam -->
-
-                        <!-- single exam -->
-                        <div class="col-md-3">
-                            <div class="single-blog">
-                                <div class="blog-img">
-                                    <a href="exam.html">
-                                        <img src="{{asset('uploads/exams/exam1.jpg')}}" alt="">
-                                    </a>
-                                </div>
-                                <h4><a href="exam.html">Pro eu error molestie deserunt. At per viderer bonorum
-                                        persecuti.</a></h4>
-                                <div class="blog-meta">
-                                    <span>18 Oct, 2017</span>
-                                    <div class="pull-right">
-                                        <span class="blog-meta-comments"><a href="#"><i class="fa fa-users"></i> 35</a></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- /single exam -->
-
-                        <!-- single exam -->
-                        <div class="col-md-3">
-                            <div class="single-blog">
-                                <div class="blog-img">
-                                    <a href="exam.html">
-                                        <img src="{{asset('uploads/exams/exam1.jpg')}}" alt="">
-                                    </a>
-                                </div>
-                                <h4><a href="exam.html">Pro eu error molestie deserunt. At per viderer bonorum
-                                        persecuti.</a></h4>
-                                <div class="blog-meta">
-                                    <span>18 Oct, 2017</span>
-                                    <div class="pull-right">
-                                        <span class="blog-meta-comments"><a href="#"><i class="fa fa-users"></i> 35</a></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- /single exam -->
-
-                        <!-- single exam -->
-                        <div class="col-md-3">
-                            <div class="single-blog">
-                                <div class="blog-img">
-                                    <a href="exam.html">
-                                        <img src="{{asset('uploads/exams/exam1.jpg')}}" alt="">
-                                    </a>
-                                </div>
-                                <h4><a href="exam.html">Pro eu error molestie deserunt. At per viderer bonorum
-                                        persecuti.</a></h4>
-                                <div class="blog-meta">
-                                    <span>18 Oct, 2017</span>
-                                    <div class="pull-right">
-                                        <span class="blog-meta-comments"><a href="#"><i class="fa fa-users"></i> 35</a></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- /single exam -->
-
-                        <!-- single exam -->
-                        <div class="col-md-3">
-                            <div class="single-blog">
-                                <div class="blog-img">
-                                    <a href="exam.html">
-                                        <img src="{{asset('uploads/exams/exam1.jpg')}}" alt="">
-                                    </a>
-                                </div>
-                                <h4><a href="exam.html">Pro eu error molestie deserunt. At per viderer bonorum
-                                        persecuti.</a></h4>
-                                <div class="blog-meta">
-                                    <span>18 Oct, 2017</span>
-                                    <div class="pull-right">
-                                        <span class="blog-meta-comments"><a href="#"><i class="fa fa-users"></i> 35</a></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- /single exam -->
-
-                        <!-- single exam -->
-                        <div class="col-md-3">
-                            <div class="single-blog">
-                                <div class="blog-img">
-                                    <a href="exam.html">
-                                        <img src="{{asset('uploads/exams/exam1.jpg')}}" alt="">
-                                    </a>
-                                </div>
-                                <h4><a href="exam.html">Pro eu error molestie deserunt. At per viderer bonorum
-                                        persecuti.</a></h4>
-                                <div class="blog-meta">
-                                    <span>18 Oct, 2017</span>
-                                    <div class="pull-right">
-                                        <span class="blog-meta-comments"><a href="#"><i class="fa fa-users"></i> 35</a></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- /single exam -->
-
-                        <!-- single exam -->
-                        <div class="col-md-3">
-                            <div class="single-blog">
-                                <div class="blog-img">
-                                    <a href="exam.html">
-                                        <img src="{{asset('uploads/exams/exam1.jpg')}}" alt="">
-                                    </a>
-                                </div>
-                                <h4><a href="exam.html">Pro eu error molestie deserunt. At per viderer bonorum
-                                        persecuti.</a></h4>
-                                <div class="blog-meta">
-                                    <span>18 Oct, 2017</span>
-                                    <div class="pull-right">
-                                        <span class="blog-meta-comments"><a href="#"><i class="fa fa-users"></i> 35</a></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- /single exam -->
-
-                        <!-- single exam -->
-                        <div class="col-md-3">
-                            <div class="single-blog">
-                                <div class="blog-img">
-                                    <a href="exam.html">
-                                        <img src="{{asset('uploads/exams/exam1.jpg')}}" alt="">
-                                    </a>
-                                </div>
-                                <h4><a href="exam.html">Pro eu error molestie deserunt. At per viderer bonorum
-                                        persecuti.</a></h4>
-                                <div class="blog-meta">
-                                    <span>18 Oct, 2017</span>
-                                    <div class="pull-right">
-                                        <span class="blog-meta-comments"><a href="#"><i class="fa fa-users"></i> 35</a></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- /single exam -->
-
-
+                            <!-- /single exam -->
+                        @endforeach
 
                     </div>
                     <!-- /row -->
@@ -215,19 +75,8 @@
                     <div class="row">
 
                         <!-- pagination -->
-                        <div class="col-md-12">
-                            <div class="post-pagination">
-                                <a href="#" class="pagination-back pull-left">Back</a>
-                                <ul class="pages">
-                                    <li class="active">1</li>
-                                    <li><a href="#">2</a></li>
-                                    <li><a href="#">3</a></li>
-                                    <li><a href="#">4</a></li>
-                                </ul>
-                                <a href="#" class="pagination-next pull-right">Next</a>
-                            </div>
-                        </div>
-                        <!-- pagination -->
+                    {{$paginExam->links('web.inc.paginator')}}
+                    <!-- pagination -->
 
                     </div>
                     <!-- /row -->

@@ -64,6 +64,12 @@ class Kernel extends HttpKernel
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'Lang' => \App\Http\Middleware\Lang::class,
+        'student' => \App\Http\Middleware\IsStudent::class,
+        'admin' => \App\Http\Middleware\IsAdmin::class,
+        'superAdmin' => \App\Http\Middleware\IsSuperAdmin::class,
+        'can-enter-exam' => \App\Http\Middleware\CanEnterExam::class,
+
+
 
     ];
 }

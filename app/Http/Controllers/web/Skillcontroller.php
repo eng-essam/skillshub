@@ -3,11 +3,15 @@
 namespace App\Http\Controllers\web;
 
 use App\Http\Controllers\Controller;
+use App\Models\Skill;
 use function view;
 
 class Skillcontroller extends Controller
 {
     public function show($id){
-        return view('web.skills.show');
+
+        $data['skill']=Skill::findOrfail($id);
+        $data['paginExam']=$data['skill']->exams()->paginate(12);
+        return view('web.skills.show')->with($data);
     }
 }

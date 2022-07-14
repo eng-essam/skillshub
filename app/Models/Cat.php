@@ -22,4 +22,6 @@ class Cat extends Model
         $Lang = $Lang ?? App::getLocale();
         return json_decode($this->name)->$Lang;
     }
+
+
 }
