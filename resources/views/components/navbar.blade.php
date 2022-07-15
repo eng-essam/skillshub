@@ -1,6 +1,7 @@
 <!-- Navigation -->
-<nav id="nav">
-    <ul class="main-menu nav navbar-nav navbar-right">
+
+<nav  id="nav">
+    <ul  class="main-menu nav navbar-nav navbar-right">
         <li><a href="{{ url('/') }}">@lang('web.home')</a></li>
         <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
@@ -20,6 +21,14 @@
         @endguest
 
         @auth
+
+            @if (Auth::user()->role->name == 'student')
+                <li><a href="{{ url('profile') }}">@lang('web.profile')</a></li>
+            @else
+            <li><a href="{{ url('dashboard') }}">@lang('web.Dashboard')</a></li>
+
+            @endif
+
             <li>
                 <a href="{{ route('logout') }}"
                     onclick="event.preventDefault(); document.getElementById('logout-form').submit();">

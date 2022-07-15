@@ -31,15 +31,9 @@
 
 </head>
 
-<div style="display: none">
-    @if (App()->getlocale() == 'ar')
-        {{ $log = 'rtl' }}
-    @else
-        {{ $log = 'ltr' }}
-    @endif
-</div>
 
-<body style="direction:{{ "$log" }}">
+
+<body >
 
     <!-- Header -->
     <header id="header">

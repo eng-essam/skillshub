@@ -52,13 +52,21 @@ return [
     'resend' => 'Resend Email',
     'verify' => 'Verify Email',
 
-    'forgotpassword'=>'Forgot Password',
+    'forgotpassword' => 'Forgot Password',
 
-    'resetpassword'=>"Reset Password",
-    'reset'=>"Reset",
+    'resetpassword' => "Reset Password",
+    'reset' => "Reset",
 
-    'endexam'=>'You Fininsed Exam Successful Whit Score '
+    'endexam' => 'You Fininsed Exam Successful Whit Score ',
 
+    'profile' => 'Profile',
+
+    'exam-name' => 'Exam Name',
+    'exam-score' => 'Score',
+    'exam-time' => 'Time',
+    'exam-date' => 'Date',
+
+    'Dashboard' => 'Dashboard',
 
 
 ];

@@ -36,4 +36,11 @@ class Exam extends Model
         return json_decode($this->desc)->$Lang;
     }
 
+    public function scopeActive($query)
+    {
+        return $query->where('active', 1);
+    }
+
+
+
 }

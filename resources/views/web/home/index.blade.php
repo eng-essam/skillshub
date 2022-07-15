@@ -52,42 +52,24 @@
                 <div class="row">
 
                     <!-- single course -->
-                    <div class="col-md-3 col-sm-6 col-xs-6">
-                        <div class="course">
-                            <a href="#" class="course-img">
-                                <img src="{{ asset('uploads/exams/exam1.jpg') }}" alt="">
-                                <i class="course-link-icon fa fa-link"></i>
-                            </a>
-                            <a class="course-title" href="#">Beginner to Pro in Excel: Financial Modeling and
-                                Valuation</a>
-                            <div class="course-details">
-                                <span class="course-category">Design</span>
+                    @foreach ($exams as $exam)
+                        <div class="col-md-3 col-sm-6 col-xs-6">
+                            <div class="course">
+                                <a href="{{ url("exam/show/$exam->id") }}" class="course-img">
+                                    <img src="{{ asset("uploads/$exam->img") }}" alt="">
+                                    <i class="course-link-icon fa fa-link"></i>
+                                </a>
+                                <a class="course-title" href="{{ url("exam/show/$exam->id") }}">{{ $exam->name() }}</a>
+                                <div class="course-details">
+                                    <span class="course-category"><a
+                                            href='{{ url('categories/show/' . $exam->skill->cat->id) }}'>{{ $exam->skill->cat->name() . ' | ' }}</a></span>
+                                    <span class="course-category"><a
+                                            href='{{ url('skills/show/' . $exam->skill->id) }}'>{{ $exam->skill->name() }}</a></span>
+
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <!-- /single course -->
-
-
-
-                </div>
-                <!-- /row -->
-
-                <!-- row -->
-                <div class="row">
-
-                    <!-- single course -->
-                    <div class="col-md-3 col-sm-6 col-xs-6">
-                        <div class="course">
-                            <a href="#" class="course-img">
-                                <img src="{{ asset('uploads/exams/exam5.jpg') }}" alt="">
-                                <i class="course-link-icon fa fa-link"></i>
-                            </a>
-                            <a class="course-title" href="#">PHP Tips, Tricks, and Techniques</a>
-                            <div class="course-details">
-                                <span class="course-category">Web Development</span>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
                     <!-- /single course -->
 
                 </div>
@@ -98,7 +80,7 @@
 
             <div class="row">
                 <div class="center-btn">
-                    <a class="main-button icon-button" href="#">@lang('web.moreExamsBtn')</a>
+                    {{ $exams->links('web.inc.paginator') }}
                 </div>
             </div>
 

@@ -19,10 +19,10 @@ class IsAdmin
      */
     public function handle(Request $request, Closure $next)
     {
-        $student=Role::where('name','admin')->first();
-        if(Auth::user()->role_id !== $student->id){
-            return redirect(url('/'));
+        if(Auth::user()->role->name == 'admin'){
+            return $next($request);
         }
-        return $next($request);
+        return redirect(url('/'));
+
     }
 }
