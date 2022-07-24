@@ -166,6 +166,7 @@ return [
          * Package Service Providers...
          */
         App\Providers\FortifyServiceProvider::class,
+        QCod\ImageUp\ImageUpServiceProvider::class,
         /*
          * Application Service Providers...
          */

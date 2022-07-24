@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\admin\CatController as AdminCatController;
 use App\Http\Controllers\admin\HomeController;
+use App\Http\Controllers\admin\SkillsController;
 use App\Http\Controllers\web\Catcontroller;
 use App\Http\Controllers\web\ContactController;
 use App\Http\Controllers\web\Examcontroller;
@@ -33,4 +35,16 @@ Route::middleware('auth', 'verified', 'student')->group(function () {
 // Admin Dashboard
 Route::prefix('/dashboard')->middleware('auth', 'verified', 'can-enter-dashboard')->group(function () {
     Route::get('/', [HomeController::class, 'index']);
+    Route::get('categories', [AdminCatController::class, 'index']);
+    Route::post('categories/store', [AdminCatController::class, 'store']);
+    Route::post('categories/update', [AdminCatController::class, 'update']);
+    Route::get('categories/toggle/{cat}', [AdminCatController::class, 'toggle']);
+    Route::get('categories/delete/{cat}', [AdminCatController::class, 'delete']);
+
+    Route::get('skills', [SkillsController::class, 'index']);
+    Route::post('skills/store', [SkillsController::class, 'store']);
+    Route::post('skills/update', [SkillsController::class, 'update']);
+    Route::get('skills/toggle/{skill}', [SkillsController::class, 'toggle']);
+    Route::get('skills/delete/{skill}', [SkillsController::class, 'delete']);
+
 });
